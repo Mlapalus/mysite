@@ -1,1 +1,5 @@
-
+.env
+front/node_modules
+back/vendor
+back/.env.dev.local
+back/.env.test.local

@@ -21,7 +21,7 @@ services:
         container_name: phpmyadmin_clean_mysite
         restart: always
         depends_on:
-            - mysql-clean-db
+            - mysql-clean-mysite-db
         ports:
             - '${PHPMYADMIN}:80'
         environment:
@@ -36,5 +36,17 @@ services:
             - ./docker/php/vhosts:/etc/apache2/sites-enabled
             - ./:/var/www
         restart: always
+    
+    react-clean-mysite:
+        build: docker/node
+        container_name: react_clean_mysite
+        working_dir: /var/www/front
+        tty: true
+        user: '${APP_USER_ID}:${APP_GROUP_ID}'
+        volumes:
+            - './:/var/www'
+        ports:
+            - 3001:3000
+
 volumes:
     db-mysql:
