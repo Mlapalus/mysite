@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+    mysql-clean-mysite-db:
+        image: mysql
+        container_name: db_mysql_clean_mysite
+        restart: always
+        volumes:
+            - db-mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+            MYSQL_DATABASE: '${MYSQL_DATABASE}'
+            MYSQL_USER: '${MYSQL_USER}'
+            MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+        working_dir: '${APP_CONTAINER_PATH}'
+        ports:
+            - '${MYSQL_PORT}:3306'
+
+    phpmyadmin-mysite:
+        image: phpmyadmin
+        container_name: phpmyadmin_clean_mysite
+        restart: always
+        depends_on:
+            - mysql-clean-db
+        ports:
+            - '${PHPMYADMIN}:80'
+        environment:
+            PMA_HOST: mysql-clean-db
+
+    php-clean-mysite:
+        build: docker/php
+        container_name: php_clean_mysite
+        ports:
+            - "8885:80"
+        volumes:
+            - ./docker/php/vhosts:/etc/apache2/sites-enabled
+            - ./:/var/www
+        restart: always
+volumes:
+    db-mysql:
