@@ -20,7 +20,7 @@ jobs:
                 php-version: '7.4'
                 tools: phpstan, phpcs, composer:v2
 
-            - name: Install dependencies
+            - name: Install all dependencies
               run: ./back/composer install --prefer-dist --no-progress --no-suggest
 
             - name: Run coding standards analysis
