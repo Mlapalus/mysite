@@ -24,11 +24,6 @@ jobs:
                 php-version: '7.4'
                 tools: phpstan, phpcs, composer:v2
 
-            - name: PWD 
-              run: ls -la
-            - name: Validate composer.json and composer.lock
-              run: composer validate 
-
             - name: Install dependencies
               run: composer install --prefer-dist --no-progress --no-suggest
 
