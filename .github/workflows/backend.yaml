@@ -1,0 +1,37 @@
+name: MysSite-Backend
+
+on:
+    push:
+        branches: [ main, develop ]
+    pull_request:
+        branches: [ main, develop ]
+
+defaults:
+    run:
+        working-directory: ./back
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+            uses: actions/checkout@v2
+
+            - name: Setup PHP
+            uses: shivammathur/setup-php@v2
+            with:
+                php-version: '7.4'
+                tools: phpstan, phpcs, composer:v2
+
+            - name: Validate composer.json and composer.lock
+            run: composer validate
+
+            - name: Install dependencies
+            run: composer install --prefer-dist --no-progress --no-suggest
+
+            - name: Run coding standards analysis
+            run: phpcs
+
+            - name: Run phpstan
+            run: php vendor/phpstan/phpstan/phpstan -n analyze domain src
