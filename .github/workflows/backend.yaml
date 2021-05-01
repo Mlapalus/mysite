@@ -27,7 +27,7 @@ jobs:
             - name: PWD 
               run: pwd
             - name: Validate composer.json and composer.lock
-              run: composer validate --working-dir=./back
+              run: composer validate 
 
             - name: Install dependencies
               run: composer install --prefer-dist --no-progress --no-suggest
