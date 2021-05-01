@@ -10,8 +10,12 @@
 
     <rule ref="PSR2"/>
 
-    <file>mysite-backend/domain/</file>
-    <file>mysite-backend/src/</file>
-    <file>mysite-backend/tests/</file>
+    <file>domain/</file>
+    <file>src/</file>
+    <file>tests/</file>
+
+    <exclude-pattern>bin/.phpunit</exclude-pattern>
+    <exclude-pattern>tests/bootstrap.php</exclude-pattern>
+    <exclude-pattern>public/index.php</exclude-pattern>
     
 </ruleset>

@@ -30,6 +30,8 @@ jobs:
             - name: Install all dependencies
               run: composer install --prefer-dist --no-progress --no-suggest
 
+            - name: PWD
+              run: ls -la
             - name: Run coding standards analysis
               run: php vendor/bin/phpcs
 
