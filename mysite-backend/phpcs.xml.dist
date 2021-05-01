@@ -10,8 +10,8 @@
 
     <rule ref="PSR2"/>
 
-    <file>domain/</file>
-    <file>src/</file>
-    <file>tests/</file>
+    <file>mysite-backend/domain/</file>
+    <file>mysite-backend/src/</file>
+    <file>mysite-backend/tests/</file>
     
 </ruleset>
