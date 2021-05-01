@@ -25,7 +25,7 @@ jobs:
                 tools: phpstan, phpcs, composer:v2
 
             - name: Validate composer.json and composer.lock
-              run: composer validate
+              run: composer validate --working-dir=./back
 
             - name: Install dependencies
               run: composer install --prefer-dist --no-progress --no-suggest
