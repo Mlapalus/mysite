@@ -6,10 +6,6 @@ on:
     pull_request:
         branches: [ main, develop ]
 
-defaults:
-    run:
-        working-directory: ../back
-
 jobs:
     build:
         runs-on: ubuntu-latest
