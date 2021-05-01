@@ -6,6 +6,10 @@ on:
     pull_request:
         branches: [ main, develop ]
 
+defaults:
+    run:
+        working-directory: ./mysite-backend
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -19,12 +23,15 @@ jobs:
               with:
                 php-version: '7.4'
                 tools: composer:v2
+            
+            - name: Validate composer.json and composer.lock
+              run: composer validate
 
             - name: Install all dependencies
-              run: ./mysite-backend/composer install --prefer-dist --no-progress --no-suggest
+              run: composer install --prefer-dist --no-progress --no-suggest
 
             - name: Run coding standards analysis
-              run: ./mysite-backend/vendor/bin/phpcs
+              run: php vendor/bin/phpcs
 
             - name: Run phpstan
-              run: php ./mysite-backend/vendor/phpstan/phpstan/phpstan -n analyze domain src
+              run: php vendor/phpstan/phpstan/phpstan -n analyze domain src
