@@ -18,13 +18,13 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                 php-version: '7.4'
-                tools: phpstan, phpcs, composer:v2
+                tools: composer:v2
 
             - name: Install all dependencies
-              run: ./back/composer install --prefer-dist --no-progress --no-suggest
+              run: ./mysite-backend/composer install --prefer-dist --no-progress --no-suggest
 
             - name: Run coding standards analysis
-              run: ./back/vendor/bin/phpcs
+              run: ./mysite-backend/vendor/bin/phpcs
 
             - name: Run phpstan
-              run: php ./back/vendor/phpstan/phpstan/phpstan -n analyze domain src
+              run: php ./mysite-backend/vendor/phpstan/phpstan/phpstan -n analyze domain src
