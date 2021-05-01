@@ -25,7 +25,7 @@ jobs:
                 tools: phpstan, phpcs, composer:v2
 
             - name: PWD 
-              run: pwd
+              run: ls -la
             - name: Validate composer.json and composer.lock
               run: composer validate 
 
