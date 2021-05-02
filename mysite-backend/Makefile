@@ -1,3 +1,4 @@
+.PHONY: tests
 
 prepare-dev:
 	composer install --prefer-dist
@@ -13,3 +14,8 @@ prepare-test:
 	php bin/console doctrine:database:create --env=test
 	php bin/console doctrine:schema:update -f --env=test
 	php bin/console doctrine:fixtures:load -n --env=test
+
+tests:
+	php bin/phpunit
+test-watch:
+	php vendor/bin/phpunit-watcher watch
