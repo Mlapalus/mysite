@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace App\Tests;
+namespace App\Tests\domain\Model;
 
 use MySite\Domain\Model\Tag;
 use PHPUnit\Framework\TestCase;
