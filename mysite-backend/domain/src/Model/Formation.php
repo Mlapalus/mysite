@@ -3,10 +3,13 @@
 namespace MySite\Domain\Model;
 
 use DateTime;
+use Ramsey\Uuid\Uuid;
 use DateTimeInterface;
+use Ramsey\Uuid\UuidInterface;
 
 class Formation 
 {
+    private UuidInterface $id;
     private string $title = "";
     private ?string $description = "";
     private ?School $school = null;
@@ -15,6 +18,7 @@ class Formation
 
     public function __construct()
     {
+        $this->id = Uuid::uuid4();
         $this->startDate = new DateTime();
         $this->endDate = new DateTime();
     }    
@@ -61,5 +65,13 @@ class Formation
     public function getEndDate(): ?\DateTimeInterface
     {
         return $this->endDate;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId(): UuidInterface
+    {
+        return $this->id;
     }
 }

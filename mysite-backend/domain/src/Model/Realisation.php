@@ -4,9 +4,12 @@ namespace MySite\Domain\Model;
 
 use DateTime;
 use DateTimeInterface;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class Realisation 
 {
+    private UuidInterface $id;
     private string $title;
     private string $url;
     private string $description;
@@ -16,6 +19,7 @@ class Realisation
 
     public function __construct()
     {
+        $this->id = Uuid::uuid4();
         $this->title = "";
         $this->url = "";
         $this->description = "";
@@ -87,5 +91,13 @@ class Realisation
     public function getTags(): array
     {
         return $this->tags;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId(): UuidInterface
+    {
+        return $this->id;
     }
 }

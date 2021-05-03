@@ -12,11 +12,12 @@ use App\Tests\domain\InMemory\ExperienceInMemoryRepository;
 
 class ExperienceGatewayTest extends TestCase
 {
+    protected const TITLE_EXPERIENCE = "Mon expérience";
+    protected const DESCRIPTION_EXPERIENCE = "La description de mon expérience";
     protected const NEW_TITLE_EXPERIENCE = "Ma nouvelle expérience";
+    protected const NEW_DESCRIPTION_EXPERIENCE = "La description de ma nouvelle expérience";
     protected const CLASSNAME_DATE = "\DateTimeInterface";
     protected const CLASSNAME_COMPANY = "MySite\Domain\Model\Company";
-    protected const NEW_DESCRIPTION_EXPERIENCE = "La description de ma nouvelle expérience";
-
     protected Experience $experience;
     protected Company $company;
     protected DateTimeInterface $startDate;
@@ -32,11 +33,27 @@ class ExperienceGatewayTest extends TestCase
         $this->startDate = new DateTime("11-02-2020");
         $this->endDate = new DateTime("12-05-2021");
         $this->tags = ["PHP", "HTML", "CSS"];
+        $this->experience->create(
+            self::TITLE_EXPERIENCE,
+            $this->company,
+            self::DESCRIPTION_EXPERIENCE,
+            $this->startDate,
+            $this->endDate,
+            $this->tags
+        );
+
+        $this->repository->save($this->experience);
     }
 
     public function testSaveAndGetExperience()
     {
-        $experience = new Experience();
+        $loadedExperience = $this->repository->getExperienceById($this->experience->getId()); 
+
+        $this->assertEquals($this->experience, $loadedExperience);
+    }
+
+    public function testUpdateExperience()
+    {
         $this->experience->create(
             self::NEW_TITLE_EXPERIENCE,
             $this->company,
@@ -45,11 +62,32 @@ class ExperienceGatewayTest extends TestCase
             $this->endDate,
             $this->tags
         );
+        
+        $this->repository->update($this->experience);
+        $loadedExperience = $this->repository->getExperienceById($this->experience->getId()); 
 
-        $this->repository->save($this->experience);
+        $this->assertEquals($this->experience, $loadedExperience);
 
-        $newExperience = $this->repository->getExperienceByTitle($this->experience->getTitle()); 
+    }
 
-        $this->assertEquals($this->experience, $newExperience);
+    public function testFindAllExperience()
+    {
+        $newExperience = new Experience();
+        $newExperience->create(
+            self::NEW_TITLE_EXPERIENCE,
+            $this->company,
+            self::NEW_DESCRIPTION_EXPERIENCE,
+            $this->startDate,
+            $this->endDate,
+            $this->tags
+        );
+
+        $this->repository->save($newExperience);
+
+        $experiences = $this->repository->findAll();
+
+        $this->assertIsArray($experiences);
+        $this->assertEquals(2, count($experiences));
+        $this->assertContainsOnlyInstancesOf('MySite\Domain\Model\Experience', $experiences);
     }
 }

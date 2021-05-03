@@ -4,9 +4,12 @@ namespace MySite\Domain\Model;
 
 use DateTime;
 use DateTimeInterface;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class Experience
 {
+    private UuidInterface $id;
     private string $title;
     private string $description;
     private ?DateTimeInterface $startDate;
@@ -16,6 +19,7 @@ class Experience
 
     public function __construct()
     {
+        $this->id = Uuid::uuid4();
         $this->title = "";
         $this->description = "";
         $this->startDate = new DateTime();
@@ -67,5 +71,13 @@ class Experience
     public function getEndDate(): ?\DateTimeInterface
     {
         return $this->endDate;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId(): UuidInterface
+    {
+        return $this->id;
     }
 }

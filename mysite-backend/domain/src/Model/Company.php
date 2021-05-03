@@ -2,8 +2,12 @@
 
 namespace MySite\Domain\Model;
 
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
+
 class Company
 {
+    private UuidInterface $id;
     private string $name;
     private string $img;
     private string $url;
@@ -13,6 +17,7 @@ class Company
         $this->name = "";
         $this->img = "";
         $this->url = "";
+        $this->id = uuid::uuid4();
     }
 
     public function create(
@@ -38,5 +43,13 @@ class Company
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId(): UuidInterface
+    {
+        return $this->id;
     }
 }

@@ -2,14 +2,19 @@
 
 namespace MySite\Domain\Model;
 
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
+
 class School 
 {
+    private UuidInterface $id;
     private string $name;
     private string $img;
     private string $url;
 
     public function __construct()
     {
+        $this->id = Uuid::uuid4();
         $this->name = "";
         $this->img = "";
         $this->url = "";
@@ -38,5 +43,13 @@ class School
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId(): UuidInterface
+    {
+        return $this->id;
     }
 }
