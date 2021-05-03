@@ -22,7 +22,6 @@ class RealisationTest extends TestCase
         $this->realisation = new Realisation();
         $this->createdDate = new DateTime("11-02-2020");
         $this->tags = ["HTML", "PHP"];
-        
     }
 
     public function testNewRealisation()
@@ -47,7 +46,7 @@ class RealisationTest extends TestCase
         );
 
         $this->assertEquals(self::NEW_TITLE_REALISATION, $this->realisation->getTitle());
-        $this->assertEquals( self::NEW_IMG_REALISATION, $this->realisation->getImg());
+        $this->assertEquals(self::NEW_IMG_REALISATION, $this->realisation->getImg());
         $this->assertEquals(self::NEW_URL_REALISATION, $this->realisation->getUrl());
         $this->assertEquals(self::NEW_DESCRIPTION_REALISATION, $this->realisation->getDescription());
         $this->assertInstanceOf("\DateTimeInterface", $this->realisation->getCreatedDate());

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Tests\domain\Gateway;
 
@@ -47,7 +47,7 @@ class ExperienceGatewayTest extends TestCase
 
     public function testSaveAndGetExperience()
     {
-        $loadedExperience = $this->repository->getExperienceById($this->experience->getId()); 
+        $loadedExperience = $this->repository->getExperienceById($this->experience->getId());
 
         $this->assertEquals($this->experience, $loadedExperience);
     }
@@ -64,10 +64,9 @@ class ExperienceGatewayTest extends TestCase
         );
         
         $this->repository->update($this->experience);
-        $loadedExperience = $this->repository->getExperienceById($this->experience->getId()); 
+        $loadedExperience = $this->repository->getExperienceById($this->experience->getId());
 
         $this->assertEquals($this->experience, $loadedExperience);
-
     }
 
     public function testFindAllExperience()

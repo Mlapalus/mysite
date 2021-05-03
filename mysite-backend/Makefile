@@ -19,3 +19,8 @@ tests:
 	php bin/phpunit
 test-watch:
 	php vendor/bin/phpunit-watcher watch
+
+
+test-analyze:
+		php vendor/phpstan/phpstan/phpstan -n analyze domain src
+		php vendor/bin/phpcs

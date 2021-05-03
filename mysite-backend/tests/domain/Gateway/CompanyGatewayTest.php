@@ -23,7 +23,7 @@ class CompanyGatewayTest extends TestCase
 
     public function setUp(): void
     {
-        $this->repository = new CompanyInMemoryRepository();    
+        $this->repository = new CompanyInMemoryRepository();
         $this->company = new Company();
         $this->company->create(
             self::NAME_COMPANY,

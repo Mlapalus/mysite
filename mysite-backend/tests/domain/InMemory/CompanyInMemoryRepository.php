@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Tests\domain\InMemory;
 
@@ -20,7 +20,6 @@ class CompanyInMemoryRepository implements CompanyGatewayInterface
     public function getCompanyById(UuidInterface $id): Company
     {
         return $this->companies[$id->__toString()];
-
     }
     public function update(Company $company): void
     {

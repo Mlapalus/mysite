@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace MySite\Domain\Model;
 
@@ -7,7 +7,7 @@ use DateTimeInterface;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-class Realisation 
+class Realisation
 {
     private UuidInterface $id;
     private string $title;
@@ -47,7 +47,7 @@ class Realisation
 
     /**
      * Get the value of title
-     */ 
+     */
     public function getTitle(): string
     {
         return $this->title;
@@ -55,7 +55,7 @@ class Realisation
 
     /**
      * Get the value of url
-     */ 
+     */
     public function getUrl(): string
     {
         return $this->url;
@@ -63,7 +63,7 @@ class Realisation
 
     /**
      * Get the value of description
-     */ 
+     */
     public function getDescription(): string
     {
         return $this->description;
@@ -71,7 +71,7 @@ class Realisation
 
     /**
      * Get the value of img
-     */ 
+     */
     public function getImg(): string
     {
         return $this->img;
@@ -79,7 +79,7 @@ class Realisation
 
     /**
      * Get the value of createdDate
-     */ 
+     */
     public function getCreatedDate(): DateTimeInterface
     {
         return $this->createdDate;
@@ -87,7 +87,7 @@ class Realisation
 
     /**
      * Get the value of tags
-     */ 
+     */
     public function getTags(): array
     {
         return $this->tags;
@@ -95,7 +95,7 @@ class Realisation
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId(): UuidInterface
     {
         return $this->id;

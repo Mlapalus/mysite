@@ -1,7 +1,6 @@
-<?php 
+<?php
 
 namespace App\Tests\domain\Gateway;
-
 
 use PHPUnit\Framework\TestCase;
 use MySite\Domain\Model\Realisation;
@@ -9,9 +8,8 @@ use MySite\Domain\Gateway\RealisationGatewayInterface;
 use App\Tests\domain\InMemory\RealisationInMemoryRepository;
 use DateTime;
 
-class RealisationGatewayTest extends TestCase 
+class RealisationGatewayTest extends TestCase
 {
-
     protected const TITLE_REALISATION = "Titre de ma réalisation";
     protected const DESCRIPTION_REALISATION = "Description de ma réalisation";
     protected const URL_REALISATION = "https://toto.com";
@@ -46,7 +44,6 @@ class RealisationGatewayTest extends TestCase
     {
         $loadedRealisation = $this->repository->getRealisationById($this->realisation->getId());
         $this->assertEquals($this->realisation, $loadedRealisation);
-
     }
 
     public function testUpdateRealisation()

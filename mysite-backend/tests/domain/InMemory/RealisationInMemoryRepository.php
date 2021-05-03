@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Tests\domain\InMemory;
 
@@ -21,7 +21,6 @@ class RealisationInMemoryRepository implements RealisationGatewayInterface
     public function update(Realisation $realisation): void
     {
         $this->realisations[$realisation->getId()->__toString()] = $realisation;
-
     }
     public function findAll(): array
     {

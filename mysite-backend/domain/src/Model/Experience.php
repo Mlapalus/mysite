@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace MySite\Domain\Model;
 
@@ -75,7 +75,7 @@ class Experience
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId(): UuidInterface
     {
         return $this->id;

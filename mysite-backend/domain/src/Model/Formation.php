@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace MySite\Domain\Model;
 
@@ -7,7 +7,7 @@ use Ramsey\Uuid\Uuid;
 use DateTimeInterface;
 use Ramsey\Uuid\UuidInterface;
 
-class Formation 
+class Formation
 {
     private UuidInterface $id;
     private string $title = "";
@@ -21,7 +21,7 @@ class Formation
         $this->id = Uuid::uuid4();
         $this->startDate = new DateTime();
         $this->endDate = new DateTime();
-    }    
+    }
 
     public function create(
         string $title,
@@ -38,7 +38,7 @@ class Formation
     }
     /**
      * Get the value of title
-     */ 
+     */
     public function getTitle(): string
     {
         return $this->title;
@@ -46,7 +46,7 @@ class Formation
 
     /**
      * Get the value of school
-     */ 
+     */
     public function getSchool(): ?School
     {
         return $this->school;
@@ -69,7 +69,7 @@ class Formation
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId(): UuidInterface
     {
         return $this->id;

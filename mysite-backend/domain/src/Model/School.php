@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace MySite\Domain\Model;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-class School 
+class School
 {
     private UuidInterface $id;
     private string $name;
@@ -30,7 +30,7 @@ class School
         $this->url = $url;
     }
 
-    public function getName(): string 
+    public function getName(): string
     {
         return $this->name;
     }
@@ -47,7 +47,7 @@ class School
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId(): UuidInterface
     {
         return $this->id;

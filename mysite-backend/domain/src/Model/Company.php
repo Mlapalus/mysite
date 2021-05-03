@@ -47,7 +47,7 @@ class Company
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId(): UuidInterface
     {
         return $this->id;

@@ -19,7 +19,7 @@ class FormationTest extends TestCase
     protected const CLASSNAME_DATE = "\DateTimeInterface";
     protected const CLASSNAME_SCHOOL = "MySite\Domain\Model\School";
 
-    public function setUp(): void 
+    public function setUp(): void
     {
         $this->formation = new Formation();
         $this->school = new School();
@@ -46,9 +46,9 @@ class FormationTest extends TestCase
             $this->endDate
         );
 
-        $this->assertEquals(self::NEW_TITLE_FORMATION ,$this->formation->getTitle());
-        $this->assertInstanceOf(self::CLASSNAME_SCHOOL,$this->formation->getSchool());
-        $this->assertEquals(self::NEW_DESCRIPTION_FORMATION ,$this->formation->getDescription());
+        $this->assertEquals(self::NEW_TITLE_FORMATION, $this->formation->getTitle());
+        $this->assertInstanceOf(self::CLASSNAME_SCHOOL, $this->formation->getSchool());
+        $this->assertEquals(self::NEW_DESCRIPTION_FORMATION, $this->formation->getDescription());
         $this->assertInstanceOf(self::CLASSNAME_DATE, $this->formation->getStartDate());
         $this->assertInstanceOf(self::CLASSNAME_DATE, $this->formation->getEndDate());
     }
